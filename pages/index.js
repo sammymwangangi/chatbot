@@ -126,7 +126,7 @@ export default function Home() {
                                     className={`${
                                       message.type === "user"
                                         ? "tw-bg-[#A276FF]"
-                                        : "tw-bg-[#6943AF1A]"
+                                        : "tw-bg-[#6943AF1A] tw-text-gray-700"
                                     } tw-rounded-lg tw-p-4 tw-text-white tw-max-w-sm`}
                                   >
                                     {message.message}
