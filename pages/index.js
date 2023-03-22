@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import React, { Suspense, Fragment, useRef, useState, useEffect } from "react";
 import axios from "axios";
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,23 +52,23 @@ export default function Home() {
       });
   };
   //collapse
-  useEffect(() => {
-    const coll = document.getElementsByClassName('collapsible');
+  // useEffect(() => {
+  //   const coll = document.getElementsByClassName('collapsible');
 
-    for (let i = 0; i < coll.length; i++) {
-      coll[i].addEventListener('click', function () {
-        this.classList.toggle('active');
+  //   for (let i = 0; i < coll.length; i++) {
+  //     coll[i].addEventListener('click', function () {
+  //       this.classList.toggle('active');
 
-        const content = this.nextElementSibling;
+  //       const content = this.nextElementSibling;
 
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + 'px';
-        }
-      });
-    }
-  }, []);
+  //       if (content.style.maxHeight) {
+  //         content.style.maxHeight = null;
+  //       } else {
+  //         content.style.maxHeight = content.scrollHeight + 'px';
+  //       }
+  //     });
+  //   }
+  // }, []);
   return (
     <>
       <Head>
@@ -78,50 +79,69 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-      <div className="chat-bar-collapsible">
-        <button id="chat-button" type="button" className="collapsible">Chat with us!
-            <i id="chat-icon" style={{color: "#fff"}} className="fa fa-fw fa-comments-o"></i>
-        </button>
+        <div className="chat-bar-collapsible">
+          <button id="chat-button" type="button" className="collapsible">
+            Chat with us!
+            <i
+              id="chat-icon"
+              style={{ color: "#fff" }}
+              className="fa fa-fw fa-comments-o"
+            ></i>
+          </button>
 
-        <div className="content">
+          <div className="content">
             <div className="full-chat-block">
-            
-                <div className="outer-container">
-                    <div className="chat-container">
-                        
-                        <div id="chatbox">
-                            <h5 id="chat-timestamp"></h5>
-                            <p id="botStarterMessage" className="botText"><span>Loading...</span></p>
-                        </div>
+              <div className="outer-container">
+                <div className="chat-container">
+                {chatLog.map((message, index) => (
 
-                        
-                        <div className="chat-bar-input-block">
-                            <div id="userInput">
-                                <input id="textInput" className="input-box" type="text" name="msg"
-                                    placeholder="Tap 'Enter' to send a message" />
-                                <p></p>
-                            </div>
+                  <div key={index} id="chatbox">
+                    <h5 id="chat-timestamp"></h5>
+                    <p id="botStarterMessage" className="botText">
+                      <span>Loading...</span>
+                    </p>
+                  </div>
+                ))}
 
-                            <div className="chat-bar-icons">
-                                <i id="chat-icon" style={{color: "crimson"}} className="fa fa-fw fa-heart"
-                                    onClick="heartButton()"></i>
-                                <i id="chat-icon" style={{color: "#333"}} className="fa fa-fw fa-send"
-                                    onClick="sendButton()"></i>
-                            </div>
-                        </div>
-
-                        <div id="chat-bar-bottom">
-                            <p></p>
-                        </div>
-
+                  <div className="chat-bar-input-block">
+                    <div id="userInput">
+                      <input
+                        id="textInput"
+                        className="input-box"
+                        type="text"
+                        name="msg"
+                        placeholder="Tap 'Enter' to send a message"
+                      />
+                      <p></p>
                     </div>
+
+                    <div className="chat-bar-icons">
+                      <i
+                        id="chat-icon"
+                        style={{ color: "crimson" }}
+                        className="fa fa-fw fa-heart"
+                        onclick="heartButton()"
+                      ></i>
+                      <i
+                        id="chat-icon"
+                        style={{ color: "#333" }}
+                        className="fa fa-fw fa-send"
+                        onclick="sendButton()"
+                      ></i>
+                    </div>
+                  </div>
+
+                  <div id="chat-bar-bottom">
+                    <p></p>
+                  </div>
                 </div>
-
+              </div>
             </div>
+          </div>
         </div>
-
-    </div>
       </main>
+      <Script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></Script>
+        <Script src="public/vendor/chat.js"></Script>
     </>
   );
 }
