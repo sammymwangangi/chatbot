@@ -65,7 +65,7 @@ export default function Home() {
           <div className="questions-working">
             <div className="questions-header">
               <h1>Any questions?</h1>
-              <p className="mt-3">Chat with our Award Winning Medi Advisor</p>
+              <p className="mt-3">Chat with Medi Advisor</p>
             </div>
             <div className="row align-items-center mt-5">
               <div className="col-lg-6 col-md-6 col-sm-12 text-start">

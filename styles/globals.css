@@ -9,6 +9,7 @@ body {
   background-image: url("/images/corridor.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .questions {
@@ -154,7 +155,7 @@ body {
 }
 
 .chatbox-main {
-  background-color: #fff;
+  background-color: #303031;
   border-radius: 25px;
   padding: 40px 30px 30px 30px;
   width: 100%;
